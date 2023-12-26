@@ -2,7 +2,7 @@ A conversional live recording multimedia GPT.
 Follow steps in LexMe to see the coding process step by step.
 Participate with: 
 git remote add origin https://github.com/Lextrades/JamGPT.git
-git remote setgit  origin https://github.com/Lextrades/JamGPT.git
+git remote set git  origin https://github.com/Lextrades/JamGPT.git
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
