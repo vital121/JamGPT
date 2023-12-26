@@ -5,7 +5,12 @@ import { useChat } from "ai/react";
 import useSilenceAwareRecorder from "silence-aware-recorder/react";
 import useMediaRecorder from "@wmik/use-media-recorder";
 import mergeImages from "merge-images";
+<<<<<<< HEAD
 import { split } from "postcss/lib/list";
+=======
+//import { split } from "postcss/lib/list";
+import { useLocalStorage } from "../lib/use-local-storage";
+>>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
 
 const INTERVAL = 250;
 const IMAGE_WIDTH = 512;
@@ -101,10 +106,13 @@ export default function Chat() {
     const id = useId();
     const maxVolumeRef = useRef(0);
     const minVolumeRef = useRef(-100);
+<<<<<<< HEAD
     const isBusy = useRef(false);
     const screenshotsRef = useRef([]);
     const videoRef = useRef();
     const canvasRef = useRef();
+=======
+>>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
     const [displayDebug, setDisplayDebug] = useState(false);
     const [isStarted, setIsStarted] = useState(false);
     const [phase, setPhase] = useState("not inited");
@@ -112,6 +120,15 @@ export default function Chat() {
     const [imagesGridUrl, setImagesGridUrl] = useState(null);
     const [currentVolume, setCurrentVolume] = useState(-50);
     const [volumePercentage, setVolumePercentage] = useState(0);
+<<<<<<< HEAD
+=======
+    const isBusy = useRef(false);
+    const screenshotsRef = useRef([]);
+    const videoRef = useRef();
+    const canvasRef = useRef();
+    const [token, setToken] = useLocalStorage("ai-token", "");
+    const [lang, setLang] = useLocalStorage("lang", "");
+>>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
 
     let { liveStream, ...video } = useMediaRecorder({
         recordScreen: false,
@@ -146,6 +163,30 @@ export default function Chat() {
         audio.stopRecording();
 
         //send audio to whisper for transcription
+<<<<<<< HEAD
+=======
+        const token = JSON.parse(localStorage.getItem("ai-token"));
+        const lang = JSON.parse(localStorage.getItem("lang"));
+
+        const speechtotextFormData = new FormData();
+        speechtotextFormData.append("file", data, "audio.webm");
+        speechtotextFormData.append("token", token);
+        speechtotextFormData.append("lang", lang);
+
+        const speechtotextResponse = await fetch("/api/speechtotext", {
+            method: "POST",
+            body: speechtotextFormData,
+        });
+
+        const { text, error } = await speechtotextResponse.json();
+        
+        if (error) {
+            alert(error);
+        }
+
+        setTranscription(text);
+
+>>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
 
         //generate image grid
         setPhase("user: upload video captures");
@@ -291,6 +332,22 @@ export default function Chat() {
                 >
                     Debug
                 </button>
+<<<<<<< HEAD
+=======
+                <input
+                    type="password"
+                    className="px-4 py-2 bg-gray-700 rounded-md"
+                    value={token}
+                    placeholder="OpenAI API key"
+                    onChange={(e) => setToken(e.target.value)}
+                />
+                <input
+                    className="px-4 py-2 bg-gray-700 rounded-md"
+                    value={lang}
+                    placeholder="Optional language code"
+                    onChange={(e) => setLang(e.target.value)}
+                />
+>>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
             </div>
             <div 
                 className={`bg-[rgba(20,20,20,0.8)] backdrop-blur-xl p-8 rounded-sm absolute left-0 top-0 bottom-0 transition-all w-[75vw] sm:w-[33vw] ${
@@ -309,6 +366,13 @@ export default function Chat() {
                     <p className="text-white">{phase}</p>
                 </div>
                 <div className="space-y-2">
+<<<<<<< HEAD
+=======
+                    <div className="font-semibold text-white opacity-50">Transcript:</div>
+                    <p className="text-white">{transcription || "--"}</p>
+                </div>
+                <div className="space-y-2">
+>>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
                     <div className="font-semibold text-white opacity-50">Captures:</div>
                     <img
                     className="object-contain w-full border border-gray-500"

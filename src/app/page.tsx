@@ -1,7 +1,11 @@
 import Chat from "./chat";
 
 export default function Home() {
+<<<<<<< HEAD
     return <Chat />;
+=======
+  return <Chat />;
+>>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
 }
 
 
