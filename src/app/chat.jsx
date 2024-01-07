@@ -5,12 +5,7 @@ import { useChat } from "ai/react";
 import useSilenceAwareRecorder from "silence-aware-recorder/react";
 import useMediaRecorder from "@wmik/use-media-recorder";
 import mergeImages from "merge-images";
-<<<<<<< HEAD
 import { split } from "postcss/lib/list";
-=======
-//import { split } from "postcss/lib/list";
-import { useLocalStorage } from "../lib/use-local-storage";
->>>>>>> f2c6e38f4e243450b2278ecfe3d9af1751026b62
 
 const INTERVAL = 250;
 const IMAGE_WIDTH = 512;
